@@ -66,12 +66,13 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> im
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        @Bind(R.id.name_view)
+
         TextView nameView;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            ButterKnife.bind(itemView);
+
+            nameView= (TextView) itemView.findViewById(R.id.name_view);
 
 
         }

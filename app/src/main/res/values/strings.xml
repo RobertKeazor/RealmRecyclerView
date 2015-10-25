@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">RealmRecyclerView</string>
+    <string name="item_hint">new item</string>
 </resources>

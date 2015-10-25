@@ -1,13 +1,20 @@
 package myexamples.testingrealm.com.realmrecyclerview;
 
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class MainActivity extends AppCompatActivity {
+import Presenter.MainActivityPresenter;
+import Presenter.MainActivityPresenterImplementation;
 
+public class MainActivity extends FragmentActivity {
+MainActivityPresenter presenter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        presenter = new MainActivityPresenterImplementation();
         setContentView(R.layout.activity_main);
+        presenter.onCreate(this);
     }
 }

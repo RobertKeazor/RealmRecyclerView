@@ -5,10 +5,9 @@ import android.content.Context;
 import java.util.Collection;
 
 import io.realm.Realm;
+import io.realm.RealmResults;
 
-/**
- * Created by rob2cool on 10/25/15.
- */
+
 public class Read_Write_Implementation implements Basic_Read_Write {
     @Override
     public void DatabaseSave(Realm realm,  Collection<PersonObj> persons) {
@@ -25,6 +24,14 @@ public class Read_Write_Implementation implements Basic_Read_Write {
         realm.beginTransaction();
         persons.setName(name);
         realm.commitTransaction();
+    }
+
+    @Override
+    public Collection<PersonObj> DatabaseLoadFromList(Realm realm) {
+        realm.beginTransaction();
+        RealmResults<PersonObj> persons = realm.where(PersonObj.class).findAll();
+
+        return persons;
     }
 
 
