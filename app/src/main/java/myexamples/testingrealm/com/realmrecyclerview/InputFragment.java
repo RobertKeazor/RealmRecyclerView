@@ -14,6 +14,8 @@ import Model.BUS;
 import Model.PersonObj;
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import io.realm.Realm;
+import io.realm.RealmConfiguration;
 
 public class InputFragment extends Fragment {
 
@@ -21,7 +23,9 @@ public class InputFragment extends Fragment {
     EditText inputText;
     @Bind(R.id.inputBtn)
     Button inputBtn;
-
+    @Bind(R.id.saveBtn)
+    Button saveBtn;
+    Realm realm;
 
     @Nullable
     @Override
@@ -33,14 +37,20 @@ public class InputFragment extends Fragment {
         inputBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               PersonObj  person = new PersonObj();
+                PersonObj person = new PersonObj();
                 person.setName(inputText.getText().toString());
                 BUS.getInstance().post(person);
 
             }
         });
-
-
+       saveBtn.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               RealmConfiguration realmConfiguration = new RealmConfiguration.Builder(getActivity()).build();
+               realm.getInstance(realmConfiguration);
+               BUS.getInstance().post(realm);
+           }
+       });
 
         return v;
     }

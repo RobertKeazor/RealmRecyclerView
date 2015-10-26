@@ -28,7 +28,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> im
 
 
 
-    public ListAdapter(Collection<PersonObj> mItemTypes, Context context) {
+    public ListAdapter(ArrayList<PersonObj> mItemTypes, Context context) {
         this.mItemTypes = new ArrayList<>(mItemTypes);
         this.context = context;
 
@@ -76,6 +76,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> im
 
 
         }
+
     }
 
 }
